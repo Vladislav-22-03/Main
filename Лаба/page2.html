@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ГЕЛИОС</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="logo.jpg" alt="logo" class="logo">
+        <h1>ГЕЛИОС</h1>
+        <div class="login-form">
+            <input type="text" placeholder="логин">
+            <input type="password" placeholder="пароль">
+            <div class="button-container"> <!-- Контейнер для кнопок -->
+                <input type="submit" value="войти">
+                <a href="registration.html">
+                    <button class="register-button">регистрация</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="main.html">Главная</a>
+        <a href="page1.html">О компании</a>
+        <a href="page3.html">Страховые продукты</a>
+        <a href="page4.html">Страховые случаи</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <!-- Здесь можно добавить содержимое боковой колонки -->
+        </div>
+        <div class="content2">
+            <h1 align="center">Офисы «Гелиос»</h1>
+            <div class="office-info">
+                <div class="office-image">
+                    <a href="https://skgelios.ru/offices/" target="_blank">
+                        <img src="map.jpg" alt="карта офисов Гелиос" class="map-image">
+                    </a>
+                </div>
+            </div>
+            <!-- Ссылка "Обратная связь" расположена ниже блока карты -->
+            <nav class="nav1" style="text-align: center; margin-top: 20px;">
+                <a href="obr.html">Обратная связь</a>
+            </nav>
+        </div>
+
+        <div class="partners">
+            <!-- Поисковая строка перед нашими партнерами -->
+            <b>Поиск по страничке:</b><br>
+            <div class="search-bar">
+                <input type="text" id="search-input" class="search-input" placeholder="Поиск...">
+                <button class="search-button" onclick="searchPage()">🔍</button>
+            </div>
+        </div>
+    </div>
+
+    <footer> 
+        <p>&copy; Все права защищены</p> 
+    </footer>
+</div>
+
+<!-- Скрипт для поиска по странице -->
+<script>
+    function searchPage() {
+        // Убираем предыдущее выделение
+        document.querySelectorAll('.highlight').forEach((el) => {
+            el.classList.remove('highlight');
+        });
+
+        // Получаем текст поиска
+        const searchText = document.getElementById('search-input').value.toLowerCase();
+        if (searchText) {
+            // Ищем все элементы с текстом
+            const elements = document.querySelectorAll('.content, .sidebar, .partners');
+
+            let found = false;
+            elements.forEach((element) => {
+                const text = element.innerHTML.toLowerCase();
+                if (text.includes(searchText)) {
+                    // Подсвечиваем все совпадения
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    element.innerHTML = element.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('Ничего не найдено');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Fahrenheit Index</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="logo.jpg" alt="logo">
+        <h1>ГЕЛИОС</h1>
+        <div class="login-form">
+            <input type="text" placeholder="логин">
+            <input type="password" placeholder="пароль">
+            <div class="button-container"> <!-- Контейнер для кнопок -->
+                <input type="submit" value="войти">
+                <a href="registration.html">
+                    <button class="register-button">регистрация</button>
+                </a>
+                
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="avto.html">Авто</a>
+        <a href="dom.html">Дом</a>
+        <a href="doctor.html">Здоровье</a>
+        <a href="komplex.html">Комплекс</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <a href="page1.html">О компании</a>
+            <a href="page2.html">Контакты</a>
+            <a href="page3.html">Страховые продукты</a>
+            <a href="page4.html">Страховые случаи</a>
+        </div>
+        <div class="content">
+            <h1>Добро пожаловать</h1>
+            <img src="photo.jpg" alt="Гелиос">
+            <p>
+                ООО Страховая Компания «Гелиос» – это универсальная технологичная страховая компания, оказывающая услуги на финансовом рынке с 1993 года.
+            </p>
+            <p>
+                Обеспечивать комплексную защиту финансовых интересов клиентов Компании позволяют лицензии 
+                Банка России на осуществление ОСАГО, добровольного имущественного страхования, добровольного личного страхования 
+                (кроме страхования жизни), а также лицензия на перестрахование, выданные бессрочно.
+            </p>
+
+            <table class="table-content">
+                <tr>
+                    <th>Продукт</th>
+                    <th>Описание</th>
+                    <th>Популярность</th>
+                </tr>
+                <tr>
+                    <td>Страхования Авто</td>
+                    <td>Страхование автомобилей</td>
+                    <td>Высокая</td>
+                </tr>
+                <tr>
+                    <td>Страхования Имущество</td>
+                    <td>Страхование недвижимости</td>
+                    <td>Средняя</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="partners">
+            <!-- Поисковая строка перед нашими партнерами -->
+            <b>Поиск по страничке:</b><br>
+            <div class="search-bar">
+                <input type="text" id="search-input" class="search-input" placeholder="Поиск...">
+                <button class="search-button" onclick="searchPage()">🔍</button>
+            </div>
+
+            <b>Наши партнеры:</b><br>
+            <a href="https://www.renins.ru" target="_blank"><img src="ren.jpg" alt="REN"></a><br>
+            <a href="https://sberbankins.ru" target="_blank"><img src="Sber.jpg" alt="Sber"></a><br>
+            <a href="https://akbarsstrah.ru" target="_blank"><img src="akbars.png" alt="Ak Bars"></a>
+        </div>
+    </div>
+
+    <footer> 
+        <p>&copy; Все права защищены</p> 
+    </footer>
+</div>
+
+<!-- Скрипт для поиска по странице -->
+<script>
+    function searchPage() {
+        // Убираем предыдущее выделение
+        document.querySelectorAll('.highlight').forEach((el) => {
+            el.classList.remove('highlight');
+        });
+
+        // Получаем текст поиска
+        const searchText = document.getElementById('search-input').value.toLowerCase();
+        if (searchText) {
+            // Ищем все элементы с текстом
+            const elements = document.querySelectorAll('.content, .sidebar, .partners');
+
+            let found = false;
+            elements.forEach((element) => {
+                const text = element.innerHTML.toLowerCase();
+                if (text.includes(searchText)) {
+                    // Подсвечиваем все совпадения
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    element.innerHTML = element.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('Ничего не найдено');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

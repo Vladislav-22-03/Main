@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Fahrenheit Index</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="logo.jpg" alt="logo">
+        <h1>ГЕЛИОС</h1>
+        <div class="login-form">
+            <input type="text" placeholder="логин">
+            <input type="password" placeholder="пароль">
+            <div class="button-container"> <!-- Контейнер для кнопок -->
+                <input type="submit" value="войти">
+                <a href="registration.html">
+                    <button class="register-button">регистрация</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="main.html">Главная</a>
+        <a href="page1.html">О компании</a>
+        <a href="page2.html">Контакты</a>
+        <a href="page4.html">Страховые случаи</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            
+        </div>
+        <div class="content">
+            <td>
+                <h1 align="center">Страховые продукты</h1>
+                <ol type="1">
+                    <li><a href="https://skgelios.ru/products/auto/kasko/">Авто</a><BR></li>
+                    Мы знаем, что автомобиль для Вас – это не просто средство передвижения, но и друг, который вызывает самые теплые чувства. Именно поэтому мы готовы предоставить страховые продукты, которые помогут Вам сохранить эти чувства на долгие годы.
+                    <li><a href="https://skgelios.ru/strahovye-produkty/strahovanie-imushchestva/strakhovanie-kvartiry-i-doma/">Имущество</a><BR></li>
+                    Возвращаясь в квартиру, дом или на дачу, каждый желает оказаться в той атмосфере, которую он создавал годами. Мы готовы предложить страховые продукты, которые защитят Ваше имущество от любой неприятности.
+                    <li><a href="https://skgelios.ru/strahovye-produkty/strahovanie-zdorovya/vash-doktor-na-svyazi/">Здоровье</a><BR></li>
+                    Жизнь и семья – самая главная ценность для каждого человека. Мы понимаем это и предлагаем Вам продукты, которые обеспечат финансовую защиту семьи на случай непредвиденных событий.
+                    <li><a href="https://skgelios.ru/strahovye-produkty/kompleksnye-predlozheniya/vse-pod-kontrolem/">Комплексные</a><BR></li>
+                    Мы знаем, какую ценность для Вас имеет защита здоровья, имущества, автомобиля. Именно поэтому мы можем предложить Вам продукты, которые обеспечат комплексную защиту.
+                </ol>
+                
+            </td>
+
+           
+
+        </div>
+        <div class="partners">
+            <!-- Поисковая строка перед нашими партнерами -->
+            <b>Поиск по страничке:</b><br>
+            <div class="search-bar">
+                <input type="text" id="search-input" class="search-input" placeholder="Поиск...">
+                <button class="search-button" onclick="searchPage()">🔍</button>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <footer> 
+        <p>&copy; Все права защищены</p> 
+    </footer>
+</div>
+
+<!-- Скрипт для поиска по странице -->
+<script>
+    function searchPage() {
+        // Убираем предыдущее выделение
+        document.querySelectorAll('.highlight').forEach((el) => {
+            el.classList.remove('highlight');
+        });
+
+        // Получаем текст поиска
+        const searchText = document.getElementById('search-input').value.toLowerCase();
+        if (searchText) {
+            // Ищем все элементы с текстом
+            const elements = document.querySelectorAll('.content, .sidebar, .partners');
+
+            let found = false;
+            elements.forEach((element) => {
+                const text = element.innerHTML.toLowerCase();
+                if (text.includes(searchText)) {
+                    // Подсвечиваем все совпадения
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    element.innerHTML = element.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('Ничего не найдено');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

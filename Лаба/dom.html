@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Fahrenheit Index</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="logo.jpg" alt="logo">
+        <h1>ГЕЛИОС</h1>
+        <div class="login-form">
+            <input type="text" placeholder="логин">
+            <input type="password" placeholder="пароль">
+            <div class="button-container"> <!-- Контейнер для кнопок -->
+                <input type="submit" value="войти">
+                <a href="registration.html">
+                    <button class="register-button">регистрация</button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="main.html">Главная</a>
+        <a href="page1.html">О компании</a>
+        <a href="page2.html">Контакты</a>
+        <a href="page3.html">Страховые продукты</a>
+        <a href="page4.html">Страховые случаи</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="sidebar">
+            
+        </div>
+        <div class="container4">
+            <div class="center-image">
+                <img src="dom.png" alt="Фото дома" height="200">
+            </div>
+            <h1>Подробнее о продукте</h1>
+            <p>Вы можете выбрать готовое решение для страхования своей квартиры/дома или составить эксклюзивную страховую программу, которая будет учитывать индивидуальные особенности вашего дома или квартиры и включить в себя только актуальные и специальные риски.</p>
+            
+            <div class="info">
+                <div class="info-section">
+                    <h2> <a href="dom1.html">ГРАЖДАНСКАЯ ОТВЕТСТВЕННОСТЬ</a></h2>
+                    <p>Причинение вреда имуществу и здоровью соседей от затопления или пожара в вашей квартире.</p>
+                </div>
+                <div class="info-section">
+                    <h2> <a href="dom2.html">КОНСТРУКТИВНЫЕ ЭЛЕМЕНТЫ</a></h2>
+                    <p>Стены, перекрытия, полы и потолки и другие элементы, которые формируют конструкцию помещения.</p>
+                </div>
+                <div class="info-section">
+                    <h2> <a href="dom3.html">ДВИЖИМОЕ ИМУЩЕСТВО И РЕМОНТ</a></h2>
+                    <p>Предметы домашнего обихода и обстановки. Все виды внутренней отделки и сантехнического, водонагревательного оборудования.</p>
+                </div>
+            </div>
+        </div>
+        <div class="partners">
+            <!-- Поисковая строка перед нашими партнерами -->
+            <b>Поиск по страничке:</b><br>
+            <div class="search-bar">
+                <input type="text" id="search-input" class="search-input" placeholder="Поиск...">
+                <button class="search-button" onclick="searchPage()">🔍</button>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <footer> 
+        <p>&copy; Все права защищены</p> 
+    </footer>
+</div>
+
+<!-- Скрипт для поиска по странице -->
+<script>
+    function searchPage() {
+        // Убираем предыдущее выделение
+        document.querySelectorAll('.highlight').forEach((el) => {
+            el.classList.remove('highlight');
+        });
+
+        // Получаем текст поиска
+        const searchText = document.getElementById('search-input').value.toLowerCase();
+        if (searchText) {
+            // Ищем все элементы внутри контейнеров
+            const elements = document.querySelectorAll('.main-content, .partners'); // Поиск в нужных контейнерах
+
+            let found = false;
+            elements.forEach((element) => {
+                const originalHTML = element.innerHTML; // Сохраняем оригинальный HTML
+                const text = originalHTML.toLowerCase();
+                if (text.includes(searchText)) {
+                    // Подсвечиваем все совпадения
+                    const regex = new RegExp(`(${searchText})`, 'gi');
+                    const highlightedHTML = originalHTML.replace(regex, '<span class="highlight">$1</span>');
+                    element.innerHTML = highlightedHTML;
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                alert('Ничего не найдено');
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>

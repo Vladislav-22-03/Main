@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1; /* Светло-жёлтый фон для всей страницы */
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            flex: 1;
+            border: 2px solid #ffa726; /* Оранжевая граница */
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #f57c00; /* Тёмно-оранжевый цвет заголовка */
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ffb74d; /* Светло-оранжевая граница */
+            border-radius: 4px;
+        }
+        input[type="file"] {
+            padding: 3px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row input {
+            width: 32%;
+        }
+        .agreement {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .agreement input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffa726; /* Основной оранжевый цвет кнопки */
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #f57c00; /* Более тёмный оранжевый цвет при наведении */
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f57c00; /* Цвет фона для футера */
+            color: white;
+            margin-top: auto;
+        }
+        .send-code {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #ffcc80; /* Светло-оранжевый цвет кнопки */
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 4px;
+        }
+        .send-code:hover {
+            background-color: #ffb74d; /* Потемнение при наведении */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Регистрация</h1>
+    <form action="#" method="post">
+        <h2>Страхователь</h2>
+        <label for="last-name">Фамилия:</label>
+        <input type="text" id="last-name" placeholder="ФАМИЛИЯ" required>
+
+        <label for="first-name">Имя:</label>
+        <input type="text" id="first-name" placeholder="ИМЯ" required>
+
+        <label for="middle-name">Отчество:</label>
+        <input type="text" id="middle-name" placeholder="ОТЧЕСТВО" required>
+
+        <label for="birth-date">Дата рождения:</label>
+        <input type="date" id="birth-date" required>
+
+        <label for="doc-type">Тип документа:</label>
+        <select id="doc-type">
+            <option value="passport">Паспорт гражданина РФ</option>
+            <!-- Дополнительные типы документов можно добавить здесь -->
+        </select>
+
+        <label for="doc-number">Серия и номер:</label>
+        <input type="text" id="doc-number" placeholder="Серия и номер документа" required>
+
+        <label for="doc-issue-date">Дата выдачи:</label>
+        <input type="date" id="doc-issue-date" required>
+
+        <label for="doc-issued-by">Кем выдан:</label>
+        <input type="text" id="doc-issued-by" placeholder="Кем выдан" required>
+
+        <label for="phone">Моб. телефон:</label>
+        <input type="tel" id="phone" placeholder="+7( _ )___-__-__" pattern="\+7\(\d{3}\)\d{3}-\d{2}-\d{2}" required>
+        <button type="button" class="send-code">Отправить код</button>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Email" required>
+        <small>Указанный email будет использован в качестве логина при автоматической регистрации. Также на него после оплаты придет полис в виде pdf файла.</small>
+
+        <label for="file-upload">Документы:</label>
+        <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png, .doc, .docx, .xls, .xlsx">
+
+        <div class="agreement">
+            <input type="checkbox" id="agreement" required>
+            <label for="agreement">Выражаю своё согласие на обработку моих персональных данных. С политикой обработки персональных данных и сведениями о реализуемых требованиях к защите персональных данных ознакомлен.</label>
+        </div>
+
+        <button type="submit" class="submit-button">Зарегистрироваться</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; Все права защищены</p>
+</footer>
+
+</body>
+</html>

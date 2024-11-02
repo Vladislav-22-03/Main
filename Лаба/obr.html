@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Обратная связь</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            flex: 1;
+            border: 2px solid #ffa726;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #f57c00;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ffb74d;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffa726;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #f57c00;
+        }
+        .modal {
+            display: none; /* По умолчанию скрыто */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+        .close-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #f57c00;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f57c00;
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Обратная связь</h1>
+    <form id="feedbackForm">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Ваш email" required>
+
+        <label for="subject">Тема:</label>
+        <input type="text" id="subject" name="subject" placeholder="Тема обращения" required>
+
+        <label for="message">Сообщение:</label>
+        <textarea id="message" name="message" placeholder="Введите ваше сообщение" required></textarea>
+
+        <button type="submit" class="submit-button">Отправить</button>
+    </form>
+</div>
+
+<div class="modal" id="thankYouModal">
+    <div class="modal-content">
+        <p id="thankYouText">Здравствуйте, тут вы сможете описать проблему или оставить комментарий!</p>
+        <button class="close-button" onclick="closeModal()">Закрыть</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; Все права защищены</p>
+</footer>
+
+<script>
+    // Получаем элементы формы и модального окна
+    const feedbackForm = document.getElementById('feedbackForm');
+    const thankYouModal = document.getElementById('thankYouModal');
+    const thankYouText = document.getElementById('thankYouText');
+    
+    // Флаг для отслеживания первого нажатия кнопки "Закрыть"
+    let isFirstClose = true;
+
+    feedbackForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+        // Проверяем валидность формы
+        if (feedbackForm.checkValidity()) {
+            // Имитация успешной отправки данных
+            setTimeout(function() {
+                // Получаем имя пользователя из формы
+                const userName = document.getElementById('name').value;
+
+                // Обновляем текст в модальном окне с именем пользователя
+                thankYouText.textContent = `Спасибо, ${userName}, за обратную связь!`;
+
+                // Показываем модальное окно
+                thankYouModal.style.display = 'flex';
+            }, 500); // Задержка для имитации отправки
+        }
+    });
+
+    function closeModal() {
+        if (isFirstClose) {
+            // Закрываем модальное окно
+            thankYouModal.style.display = 'none';
+            // Сбрасываем форму после закрытия
+            feedbackForm.reset();
+            // Устанавливаем флаг на второе нажатие
+            isFirstClose = false;
+        } else {
+            // Переход на главную страницу
+            window.location.href = 'main.html'; // Укажите путь к вашей главной странице
+        }
+    }
+</script>
+
+</body>
+</html>
