@@ -1,0 +1,6 @@
+@KasperskyNew_HostAddress = http://localhost:5185
+
+GET {{KasperskyNew_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
